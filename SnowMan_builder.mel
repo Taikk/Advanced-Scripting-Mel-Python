@@ -1,0 +1,33 @@
+polySphere -r 5 -sx 15 -sy 15 -name BodyLower_low; // Creating Lower section of body
+polySphere -r 3.5 -sx 15 -sy 15 -name BodyMiddle_low;// Creating Mid section of body
+move -co 0 5 0; // Moving Middle section of the body
+polySphere -r 2 -sx 15 -sy 15 -name BodyHead_low; // Creating Upper section of body
+move -co 0 9 0; // Moving Upper section of the body
+
+//Creating and positioning the two eyes
+polyCube -d .3 -h .3 -w .5 - name LeftEye_low;
+move -co 1.5 10 .75;
+polyCube -d .3 -h .3 -w .5 - name RightEye_low;
+move -co 1.5 10 -.75;
+
+//Arms created and rotation
+polyCylinder -h 5 -r 0.5 -rcp 0 - sx 10 - sy 10 -ax -1 1 -1 -name Arm_left_low;
+move -co 1 6 4;
+polyCylinder -h 5 -r 0.5 -rcp 0 - sx 10 - sy 10 -ax -1 1 1 -name Arm_right_low;
+move -co 1 6 -4;
+
+//mouth
+polyCube -d 1.2 -h .2 -w .5 -name Mouth_low;
+move -co 1.8 8.7 0;
+
+//Nose
+
+polyCube -d .4 -h .4 -w .4 -name Nose_low;
+move -co 1.8 9.5 0;
+
+//Hat
+
+polyCube -d 4 -h .1 -w 4 - name Hat_Lower_low;
+move -co 0 10.5 0;
+polyCylinder -h 3 -r 1.5 -sx 10 -sy 10 -name Hat_Upper_low;
+move -co 0 12 0;
