@@ -1,0 +1,25 @@
+{
+    string $allObs[] = {};
+    string $tempArray[] = {};
+    
+    $tempArray = `polyCylinder -n myCylinder -sx 6 -sy 6 -sz 6`;
+    $allObs[0] = $tempArray[0];
+
+    
+    $tempArray = `cone -ax 0 1 0 -n cone1`;
+    $allObs[1] = $tempArray[0];
+    
+    
+    $tempArray = `polyCube -n myCube`;
+    $allObs[2] = $tempArray[0];
+    parent myCylinder myCube;
+    extrude -et 0 -d 0 0 -l 5 profile;
+        
+    group -n group1 myCube cone1;
+    rotate 45deg 0 0 group1;
+    
+    rotate 180deg 1 0 cone1;
+    
+    rename group1 MyGroup;
+    
+}
