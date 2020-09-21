@@ -44,7 +44,12 @@ proc float Divide(float $list[])
 
 proc float Exponent(float $a, float $b)
 {
-	float $val = pow($a, $b);
+	float $val = $a;
+	
+	for ($i = 1; $i < $b; $i++)
+	{
+		$val *= $a;
+	}
 	return $val;
 }
 
