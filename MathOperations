@@ -1,0 +1,85 @@
+proc float Add(float $list[])
+{
+	float $sum = 0;
+	
+	for($i=0; $i<size($list);$i++)
+	{
+		$sum += $list[$i];
+	}
+	return $sum;
+}
+
+proc float Sub(float $list[])
+{
+	float $sum = 0;
+	
+	for($i=0; $i<size($list);$i++)
+	{
+		$sum -= $list[$i];
+	}
+	return $sum;
+}
+
+proc float Multiply(float $list[])
+{
+	float $sum = 1;
+	
+	for($i=0; $i<size($list);$i++)
+	{
+		$sum *= $list[$i];
+	}
+	return $sum;
+}
+
+proc float Divide(float $list[])
+{
+		float $sum = $list[0];
+	
+	for($i=1; $i<size($list);$i++)
+	{
+		$sum *= $list[$i];
+	}
+	return $sum;
+}
+
+proc float Exponent(float $a, float $b)
+{
+	float $val = pow($a, $b);
+	return $val;
+}
+
+proc float Median(float $list[])
+{
+    float $sum;
+    float $sortedList[] = `sort $list`;
+    
+    $sum = $list[size($list) / 2];
+    
+    return $sum;
+}
+
+proc float Mode(float $list[])
+{
+    float $mode = $list[0];
+	float $current = 0;
+	float $highest = 0;
+
+    for($i = 0; $i < size($list); $i++)
+    {
+		$current = 0;
+		
+        for($z = $i; $z < size($list); $z++)
+        {
+		    if($list[$i] == $list[$z])
+			{
+				$current++;
+				if($current >= $highest)
+				{
+					$highest = $current;
+					$mode = $list[$i];
+				}
+			}
+        }
+    }
+    return $mode;  
+}
