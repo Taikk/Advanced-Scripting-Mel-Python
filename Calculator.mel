@@ -1,0 +1,171 @@
+proc float Calculator( float $list[], string $operators)
+{
+        if($operators == "Add")
+        {
+            return Add($list);
+        }
+        else if($operators == "Sub")
+        {
+            return Sub($list);
+        }
+        else if($operators == "Mult")
+        {
+            return Multiply($list);
+        }
+        else if($operators == "Divide")
+        {
+            return Divide($list);
+        }
+        else if($operators == "Exponent")
+        {
+            if(size($list) == 2)
+            {
+                return Exponent($list[0], $list[1]);
+            }
+            else
+            {
+                print "You done messed up A-A-ron";
+            }
+        }
+        else if($operators == "Mean")
+        {
+            return Mean($list);
+        }
+        else if($operators == "Median")
+        {
+            return Median($list);
+        }
+        else if($operators == "Mode")
+        {
+            return Mode($list);
+        }
+        return $operators;        
+}
+
+proc float Add(float $list[])
+{
+	float $sum = $list[0];
+	string $operation = $list[0];
+	
+	for($i= 1; $i<size($list);$i++)
+	{
+		$sum += $list[$i];
+		$operation = $operation + " + " + $list[$i];
+	}	
+	print ($operation + " = " + $sum);
+	return $sum;
+}
+
+proc float Sub(float $list[])
+{
+	float $sum = $list[0];
+	string $operation = $list[0];
+	
+	for($i= 1; $i<size($list);$i++)
+	{
+		$sum -= $list[$i];
+		$operation = $operation + " - " + $list[$i];
+	}
+	print ($operation + " = " + $sum);
+	return $sum;
+}
+
+proc float Multiply(float $list[])
+{
+	float $sum = $list[0];
+	string $operation = $list[0];
+	
+	for($i= 1; $i<size($list);$i++)
+	{
+		$sum *= $list[$i];
+		$operation = $operation + " * " + $list[$i];
+	}
+	print ($operation + " = " + $sum);
+	return $sum;
+}
+
+proc float Divide(float $list[])
+{
+	float $sum = $list[0];
+	string $operation = $list[0];
+	
+	for($i= 1; $i<size($list);$i++)
+	{
+		$sum *= $list[$i];
+		$operation = $operation + " / " + $list[$i];
+	}
+	print ($operation + " = " + $sum);
+	return $sum;
+}
+
+proc float Exponent(float $a, float $b)
+{
+	float $val = $a;
+	string $operation = 0;
+	
+	for ($i = 1; $i < $b; $i++)
+	{
+		$val *= $a;
+	}
+	$operation = $a + " to the power of " + $b;
+	print ($operation + " = " + $val);
+	return $val;
+}
+
+proc float Mean(float $list[])
+{
+   float $sum = $list[0];
+	string $operation = $list[0];
+	
+	for($i= 1; $i<size($list);$i++)
+	{
+		$sum += $list[$i];
+	}	
+	
+	$sum /= size($list);
+	
+	print ("The mean of \n");
+	print ($list);
+	print(" is equal to " + $sum);
+	return $sum;
+}
+
+proc float Median(float $list[])
+{
+    float $sum = $list[0];
+    string $operation = $list[0];
+    float $sortedList[] = `sort $list`;
+    
+    $sum = $list[size($list) / 2];
+    $operation = "The median of this array is " + $sum;
+    
+    print($operation);
+    return $sum;
+}
+
+proc float Mode(float $list[])
+{
+   float $mode = $list[0];
+	float $current = 0;
+	float $highest = 0;
+
+    for($i = 0; $i < size($list); $i++)
+    {
+        $current = 0;
+		
+        for($z = $i; $z < size($list); $z++)
+        {
+            if($list[$i] == $list[$z])
+            {
+               $current++;
+				    if($current >= $highest)
+				    {
+                    $highest = $current;
+                    $mode = $list[$i];
+				    }
+            }
+        }
+    }
+    print("The mode of the array is " + $mode);
+    return $mode;  
+}

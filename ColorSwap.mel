@@ -1,0 +1,16 @@
+proc ColorSwap(int $color)
+{
+    string $array[] = {};
+    $array = `ls -sl`;
+    
+    for( $i = 0; $i < size($array); $i++)
+    {
+        string $shapes[] = `listRelatives -s $array[$i]`;
+         
+        for($z = 0; $z < size($shapes); $z++)
+        {
+            setAttr($shapes[$z] + ".overrideEnabled", 1);
+            setAttr($shapes[$z] + ".overrideColor", $color);
+        }
+    }
+}
