@@ -1,0 +1,20 @@
+proc RandomPlacement(int $num, float $minX, float $maxX, float $minY, float $maxY, float $minZ, float $maxZ)
+{
+	float $randX, $randY, $randZ;
+	string $array[];
+	
+	string $sel[] = `ls -sl`;
+	
+	for($i in $sel)
+	{
+		for($z = 0; $z < $num; $z++)
+		{
+			$array = `duplicate $i`;
+			
+			$randX = `rand $minX $maxX`;
+			$randY = `rand $minY $maxY`;
+			$randZ = `rand $minZ $maxZ`;
+			xform -ws -t $randX $randY $randZ $array;
+		}
+	}
+};
