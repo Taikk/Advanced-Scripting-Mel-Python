@@ -2,7 +2,7 @@ import maya.cmds as cmds
 import random
 
 
-class PolyCreate:
+class Generator:
     def __init__(self):
         self.my_window = 'ranWin'
 
@@ -64,5 +64,5 @@ class PolyCreate:
                                                random.uniform(minZ, maxZ)))
 
 
-my_window = PolyCreate()
+my_window = Generator()
 my_window.create()

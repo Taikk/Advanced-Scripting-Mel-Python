@@ -17,9 +17,8 @@ class Window:
                                      widthHeight=(200, 200))
         self.col_layout = cmds.columnLayout(parent=self.my_window,
                                             adjustableColumn=True)
-        self.size_slider = cmds.intSliderGrp(parent=self.col_layout,
-                                             minValue=0,
-                                             maxValue=25)
+
+        cmds.showWindow(self.my_window)
 
         cmds.button(parent=self.col_layout,
                     label='Random Generator',
@@ -27,11 +26,28 @@ class Window:
         cmds.button(parent=self.col_layout,
                     label='Rename Function',
                     c=lambda *x: self.renameFunc())
+        cmds.button(parent=self.col_layout,
+                    label='Freeze Transforms',
+                    c=lambda *x: self.freezeFunc())
 
     def ranGenFunc(self):
         import RandGen
         reload(RandGen)
+        instance = RandGen.Generator()
+        instance.create()
 
     def renameFunc(self):
         import Renamer
         reload(Renamer)
+        instance = Renamer.Renamer()
+        instance.create()
+
+    def freezeFunc(self):
+        import FreezeTransforms
+        reload(FreezeTransforms)
+        instance = FreezeTransforms.FreezeTransform()
+        instance.create()
+
+
+my_window = Window()
+my_window.create()
