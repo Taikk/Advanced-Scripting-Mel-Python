@@ -54,8 +54,6 @@ class Window:
     def freezeFunc(self):
         import FreezeTransforms
         reload(FreezeTransforms)
-        instance = FreezeTransforms.FreezeTransform()
-        instance.create()
 
     def parentFunc(self):
         import Parent
