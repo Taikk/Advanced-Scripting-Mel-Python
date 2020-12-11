@@ -29,6 +29,15 @@ class Window:
         cmds.button(parent=self.col_layout,
                     label='Freeze Transforms',
                     c=lambda *x: self.freezeFunc())
+        cmds.button(parent=self.col_layout,
+                    label='Parent Group',
+                    c=lambda *x: self.parentFunc())
+        cmds.button(parent=self.col_layout,
+                    label='Delete All History',
+                    c=lambda *x: self.deleteFunc())
+        cmds.button(parent=self.col_layout,
+                    label='Parent Constrain',
+                    c=lambda *x: self.constrainFunc())
 
     def ranGenFunc(self):
         import RandGen
@@ -47,6 +56,19 @@ class Window:
         reload(FreezeTransforms)
         instance = FreezeTransforms.FreezeTransform()
         instance.create()
+
+    def parentFunc(self):
+        import Parent
+        reload(Parent)
+
+    def deleteFunc(self):
+        import DeleteHistory
+        reload(DeleteHistory)
+
+    def constrainFunc(self):
+        import ParentConstrain
+        reload(ParentConstrain)
+
 
 
 my_window = Window()
