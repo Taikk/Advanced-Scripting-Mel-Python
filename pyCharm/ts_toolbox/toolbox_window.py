@@ -38,6 +38,9 @@ class Window:
         cmds.button(parent=self.col_layout,
                     label='Parent Constrain',
                     c=lambda *x: self.constrainFunc())
+        cmds.button(parent=self.col_layout,
+                    label='Joint Display Tool',
+                    c=lambda *x: self.jointTool())
 
     def ranGenFunc(self):
         import RandGen
@@ -67,6 +70,11 @@ class Window:
         import ParentConstrain
         reload(ParentConstrain)
 
+    def jointTool(self):
+        import JointTransform
+        reload(JointTransform)
+        instance = JointTransform.JointTransform()
+        instance.create()
 
 
 my_window = Window()
